@@ -1,0 +1,1 @@
+## Issue with api-console: https://github.com/mulesoft/api-console/issues/525
