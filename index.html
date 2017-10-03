@@ -1,0 +1,36 @@
+<head>
+	<link rel="import" href="bower_components/raml-js-parser/raml-js-parser.html">
+	<link rel="import" href="bower_components/raml-json-enhance/raml-json-enhance.html">
+    <link rel="import" href="bower_components/api-console/api-console.html">
+</head>
+	
+<body>
+	<raml-js-parser json></raml-js-parser>
+	<raml-json-enhance></raml-json-enhance>
+    <api-console></api-console>
+	
+	<script>	
+		function init() {
+			var parser = document.querySelector('raml-js-parser');
+			parser.addEventListener('api-parse-ready', function(e) {
+				var enhacer = document.querySelector('raml-json-enhance');
+				enhacer.json = e.detail.json.specification;
+			});
+			window.addEventListener('raml-json-enhance-ready', function(e) {
+				var apiConsole = document.querySelector('api-console');
+			  
+				// The e.detail.json contains the final JavaScript object
+				console.log(e.detail.json);
+			  
+				apiConsole.raml = e.detail.json;
+		  
+			});
+			console.log('ready');
+			var origin = window.location.origin;
+			var ramlPath = window.location.search.split("=")[1];
+			parser.loadApi(origin + "/" + ramlPath);
+		};
+		console.log('registering');
+		window.addEventListener('DOMContentLoaded', init);
+	</script>
+</body>

@@ -1,0 +1,9 @@
+{
+    "name": "api-dashboard",
+    "description": "Used to pull in api-console",
+    "private": true,
+    "devDependencies": {
+        "api-console": "4.1.0",
+        "raml-js-parser": "advanced-rest-client/raml-js-parser#2.0.5"
+    }
+}
