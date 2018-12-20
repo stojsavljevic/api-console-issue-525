@@ -26,8 +26,9 @@ paths:
                     description: 'tags to filter by'
                     required: false
                     style: form
+                    example: ["x", "y"]
                     schema:
-                        type: array
+                        type: string
                         items:
                             type: string
                 -
@@ -35,6 +36,7 @@ paths:
                     in: query
                     description: 'maximum number of results to return'
                     required: false
+                    example: 123
                     schema:
                         format: int32
                         type: integer
